@@ -47,21 +47,23 @@ def main():
 
     clock = pg.time.Clock()
     tmr = 0
-    font = pg.font.Font (None,80)
-    txt = font.render("Game Over",True,(255,255,255)) 
+    #画面に表示する文字
+    font = pg.font.Font (None, 80)
+    txt = font.render("Game Over", True, (255,255,255)) 
 
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return 
+            
         if kk_rct.colliderect(bd_rct):  # こうかとんと爆弾がぶつかったら
-            sikaku = pg.Surface((WIDTH,HEIGHT))
-            pg.draw.rect(sikaku,(0,0,0),(0,0,WIDTH,HEIGHT))
-            sikaku.set_alpha(170)
-            screen.blit(sikaku,[0,0])
-            screen.blit(txt,[350,250])
+            sikaku = pg.Surface((WIDTH, HEIGHT))
+            pg.draw.rect(sikaku, (0, 0, 0), (0, 0, WIDTH, HEIGHT))  #画面と同じ大きさの四角形を描画
+            sikaku.set_alpha(170)  #透過させる
+            screen.blit(sikaku, [0, 0])    
+            screen.blit(txt, [350, 250])
             pg.display.update()
-            time.sleep(5)
+            time.sleep(5)  #5秒間
             return
         
         screen.blit(bg_img, [0, 0]) 
